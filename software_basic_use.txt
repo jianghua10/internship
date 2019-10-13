@@ -1,0 +1,22 @@
+Git简单用法：
+法一.从远程仓库clone到本地仓库，然后利用git pull更新本地仓库，以及git push上传本地仓库的内容到远程仓库.
+法二.
+S1.直接在本地仓库初始化一个目录git init，
+S2.连接本地仓库到远程仓图git remote add [name] [url] :其中name是用户自定义，给远程仓库起的名字，url则是远程仓库的网址（需要提前创建？）。
+通用：
+git remote：查询远程仓库名字
+git status：查询文件的状态
+git pull：从远程仓库抓取数据，！并且合并远程分支到本地分支！，只有分支合并完之后在本地仓库才能看见更新的数据。
+git push [remote-name] [branch name] :其中remote-name就是远程仓库的名字，branch-name则是分支的名字。例子：git push hj_internship master
+git add [filename] ：文件名需要带格式，可以先用status查看之后再输入
+Git commit -m[comment] :只有提交之后，更新才允许上传到远程仓库
+
+Mysql简单用法:(下载mysql和mysql-connector-python!)
+1️⃣把.sql文件导入Mysql：
+①如果想导入也存在的数据库： use [database_name] -> source [.sql_filepath]可以直接拖拽到这
+②如果新建一个数据库并导入： create database [database_name] -> use [database_name] -> [.sql_filepath]
+2️⃣读取.sql中的数据：
+mysql模式下： use [database_name] -> select * from [table_name] 可以读取全部数据
+Python模式下： 参考编程，主要利用python和mysql的连接器以及pandas模块中的Dataframe
+3️⃣读取表头：
+mysql模式下：select column_name from information_schema.columns where table_name = 'table_name' and table_schema = 'db_name'
