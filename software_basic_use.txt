@@ -13,6 +13,7 @@ git add [filename] ：文件名需要带格式，可以先用status查看之后�
 Git commit -m[comment] :只有提交之后，更新才允许上传到远程仓库
 
 Mysql简单用法:(下载mysql和mysql-connector-python!)
+终端下进入mysql环境:mysql -u root -p 然后输入密码即可
 1️⃣把.sql文件导入Mysql：
 ①如果想导入也存在的数据库： use [database_name] -> source [.sql_filepath]可以直接拖拽到这
 ②如果新建一个数据库并导入： create database [database_name] -> use [database_name] -> [.sql_filepath]

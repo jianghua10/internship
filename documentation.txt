@@ -1,0 +1,26 @@
+Week 4:
+Reference:
+1.Thesis
+Besides the basic knowledge of of the turning process, the Thesis mainly focus on the OTWP and ACPC systems. 
+1.1OTWP(online tool wear state): 
+two methods are used to predict the tool wear state. One is the MLR(multiple Linear Regression), but the effect as the result shows is not good. The other one is the artificial neural network, which is a useful one for blackbox. And in the MLR, features are selected through backward elimination while in the ANN, backward propagation is utilized to update the weights. What's more, ReLU() is chosen as the activation function, which can avoid zero gradient effectively, and the optimizer is the Adam. Finally it uses the way of grid search to determine the structure of ANN, namely the number of hidden layers and the amount of neurons in each hidden layer.
+1.2ACPC(Adaptive Parameter Control System):
+it's one kind of control theory and the key is the Reference Model. So the first step is to derive the optimal trajectory from the experiment data. The way is to pick best cutting parameters set in each tool wear state according to the a ratio index X, Vcut divide the increment of tool wear, as the Vcut can be calculated as long as the cutting parameters are certain and tool wear is predicted by the OTWP. And then combining with model reference to adjust the cutting parameters adaptively.
+
+to do:
+1.ANN is a good way to design a model of tool wear, because it's hard to derive the system model in terms of the physical rules, which means the system can be regarded as a blackbox. Meanwhile it's obviously that the relationship is nonlinear between inputs and outputs. So hier is to do some changes to further improve the ANN.
+1.1 As the data is not big, we may need to add the Dropout, a kind of tip when train the NN to avoid overfitting, and use the SGD(Stochastic Gradient Descent) instead of Adam.
+1.2 other hyper parameters like the amount of hidden layers and neurons and learning rate are also concerned problems in the NN, but hier we keep them consistent with the ones in the Thesis as much as possible.
+1.3 Because in the reality, the tool wear of a fresh tool changes differently in each period. In the initial period, it changes rapidly as the contact area is small an d therefore the force is so big. But in the steady state, the rate becomes a constant and at not a high level. So we may need to design different models for different period but both with the method of ANN.
+
+2.the X can be calculated from the Vcut(by the certain cutting parameters) and tool wear(through the model), so it may exist other control theory to derive the optimal trajectory. 
+
+done:
+1.design the ANN
+1.1 learn the mysql to acquire data and combine it with the python
+1.2 learn how to create the ANN through Pytorch and designed models for different periods.
+
+problems:
+1.I can't get the data through the join command mentioned in the Thesis. So I tried another way to combine experiment data from two tables, but the result is little bit different with the one in the Thesis. It may lead to difference when training the model.
+2.I don't understand the code of deriving the optimal trajectory. Firstly I'm confused about what kind of meaning the parameters represent, such as the CVperVR and VR. It seems the parameter CVperVR corresponds to the ratio X. But in the raw data I don't see it and in the code I don't see how it's processed either.
+3.Verifying the quality of the model needs support of optimal trajectory and experiment. 
